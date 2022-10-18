@@ -1,0 +1,33 @@
+
+<div class="col" *ngIf="isContractsLoaded">
+
+  <h2 >Назва об'єкту : {{name}}</h2>
+  <h3  style="font-style: italic" >Номер будинку : {{houseNumber}}</h3>
+  <h3  style="font-style: italic">Категорія об'єкта : {{category}}</h3>
+  <h3 style="font-style: italic">Площа об'єкту : {{area}}</h3>
+</div>
+
+<mat-table [dataSource]="dataSource" class="mat-elevation-z8" *ngIf="isContractsLoaded">
+  <!-- ID Column -->
+  <ng-container matColumnDef="mark">
+    <mat-header-cell *matHeaderCellDef> Операція </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.mark}} </mat-cell>
+  </ng-container>
+
+   <!-- Created date Column -->
+  <ng-container matColumnDef="createDate">
+    <mat-header-cell *matHeaderCellDef> Дата документу </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.createDate}} </mat-cell>
+  </ng-container>
+
+  <!-- Summ Column -->
+  <ng-container matColumnDef="summ">
+    <mat-header-cell *matHeaderCellDef> Сумма </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.summ}} </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row  [ngClass]="{'make-green': row.mark == 'Сплачено'}" *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+
+<router-outlet></router-outlet>
