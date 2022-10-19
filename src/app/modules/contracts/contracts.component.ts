@@ -59,6 +59,7 @@ export class ContractsComponent implements OnInit, OnDestroy  {
 
     this.route.paramMap.pipe(
       switchMap((params: ParamMap) => {
+        this.isContractsLoaded = false;
         this.id = params.get('id');
         return of(params.get('id'));
       })
@@ -113,7 +114,6 @@ export class ContractsComponent implements OnInit, OnDestroy  {
     this.invoiceService.getAllInvoicesByContractId(contract.id)
     .subscribe(data => {
       this.contract.invoices = data;
-
       this.dataSource = this.dataSource.concat(data);
       this.dataSource = this.dataSource.sort(
         function(objA, objB) {
@@ -129,7 +129,6 @@ export class ContractsComponent implements OnInit, OnDestroy  {
     this.paymentService.getAllPaymentsByContractId(contract.id)
     .subscribe(data => {
       this.contract.payments = data;
-
       this.dataSource = this.dataSource.concat(data);
       this.dataSource = this.dataSource.sort(
         function(objA, objB) {

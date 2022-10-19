@@ -3,7 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Payment} from "../models/Payment";
 
-const PAYMENT_API = `https://stolitsa-back.herokuapp.com/api/payment/`;
+const PAYMENT_API = `https://stolitsa-back.herokuapp.com/api/payments/`;
 // const PAYMENT_API = `http://localhost:8080/api/payments/`
 
 @Injectable({
